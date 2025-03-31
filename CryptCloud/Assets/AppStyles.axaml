@@ -1,0 +1,108 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+
+    <Design.PreviewWith>
+    </Design.PreviewWith>
+
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackground}" />
+        <Setter Property="Width" Value="1440" />
+        <Setter Property="Height" Value="900" />
+    </Style>
+
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{DynamicResource PrimaryButtonBackground}" />
+        <Setter Property="CornerRadius" Value="25" />
+    </Style>
+
+    <Style Selector="Button.transparent">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="Button.transparent:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="Button.menu">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="10,5" />
+    </Style>
+    <Style Selector="Button.menu:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource SecondaryButtonBackground}" />
+    </Style>
+
+    <Style Selector="Button.active /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource ActiveButtonBackground}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="10,5" />
+    </Style>
+    <Style Selector="Button.active:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource ActiveButtonBackground}" />
+    </Style>
+
+    <Style Selector="Label.menu">
+        <Setter Property="Foreground" Value="{DynamicResource DarkenedForeground}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5,0" />
+    </Style>
+
+    <Style Selector="ComboBox.topCombobox">
+        <Setter Property="Background" Value="{DynamicResource PrimaryButtonBackground}" />
+    </Style>
+    <Style Selector="ComboBox[SelectedIndex=-1].topCombobox">
+        <Setter Property="Background" Value="{DynamicResource SecondaryButtonBackground}" />
+    </Style>
+
+    <Style Selector="ComboBox.basic">
+        <Setter Property="CornerRadius" Value="30" />
+        <Setter Property="Margin" Value="5,10" />
+        <Setter Property="Padding" Value="20,18,0,18" />
+        <Setter Property="Background" Value="{DynamicResource SecondaryButtonBackground}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style Selector="Expander.customExpander">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel>
+                    <ToggleButton Name="ExpanderToggle"
+                                  Padding="10"
+                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                  CornerRadius="20"
+                                  IsChecked="{TemplateBinding IsExpanded}">
+                        <ToggleButton.Styles>
+                            <Style Selector="ToggleButton:checked /template/ ContentPresenter">
+                                <Setter Property="Background" Value="{DynamicResource SecondaryButtonBackground}" />
+                            </Style>
+                        </ToggleButton.Styles>
+
+                        <StackPanel HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
+
+                            <Label VerticalAlignment="Center"
+                                   Content="{mIcons:MaterialIconExt Kind=ChevronUp,
+                                                                    Size=24}"
+                                   IsVisible="{Binding #ExpanderToggle.IsChecked}" />
+
+                            <Label VerticalAlignment="Center"
+                                   Content="{mIcons:MaterialIconExt Kind=ChevronDown,
+                                                                    Size=24}"
+                                   IsVisible="{Binding !#ExpanderToggle.IsChecked}" />
+
+                            <Label Padding="0,0,5,0"
+                                   VerticalAlignment="Center"
+                                   Content="{TemplateBinding Header}" />
+                        </StackPanel>
+                    </ToggleButton>
+
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      IsVisible="{Binding #ExpanderToggle.IsChecked}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+</Styles>

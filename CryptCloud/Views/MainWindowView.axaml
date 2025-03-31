@@ -1,0 +1,21 @@
+﻿<Window x:Class="CryptCloud.Views.MainWindowView"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:CryptCloud.ViewModels;assembly=CryptCloud"
+        Title="CryptCloud"
+        d:DesignHeight="900"
+        d:DesignWidth="1440"
+        x:DataType="vm:MainWindowViewModel"
+        ExtendClientAreaToDecorationsHint="True"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <ContentControl Grid.Column="1"
+                    Content="{Binding CurrentPage}" />
+</Window>

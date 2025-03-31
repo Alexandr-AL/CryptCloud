@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+    </Design.PreviewWith>
+
+    <SolidColorBrush x:Key="PrimaryBackground">#16171d</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryBackground">#1b1c21</SolidColorBrush>
+
+    <SolidColorBrush x:Key="PrimaryButtonBackground">#2886f1</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryButtonBackground">#222329</SolidColorBrush>
+    <SolidColorBrush x:Key="PurpleButtonBackground">#9747ff</SolidColorBrush>
+    <SolidColorBrush x:Key="ActiveButtonBackground">#222339</SolidColorBrush>
+
+    <SolidColorBrush x:Key="DarkenedForeground">#727585</SolidColorBrush>
+    <SolidColorBrush x:Key="PromptForeground">#2e97ff</SolidColorBrush>
+    <SolidColorBrush x:Key="IconForeground">#9094a9</SolidColorBrush>
+    <SolidColorBrush x:Key="Icon2Foreground">#707383</SolidColorBrush>
+    <SolidColorBrush x:Key="ErrorForeground">#ff523b</SolidColorBrush>
+
+
+    <SolidColorBrush x:Key="BorderBrush1">#222329</SolidColorBrush>
+    <SolidColorBrush x:Key="BorderBrush2">#49494e</SolidColorBrush>
+
+    <LinearGradientBrush x:Key="GradientBrush1" StartPoint="0%, 50%" EndPoint="100%, 50%">
+        <GradientStop Offset="0" Color="#ff9e62" />
+        <GradientStop Offset="1" Color="#fb4d30" />
+    </LinearGradientBrush>
+
+</ResourceDictionary>

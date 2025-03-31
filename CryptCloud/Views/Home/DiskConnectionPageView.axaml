@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="CryptCloud.Views.Home.DiskConnectionPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CryptCloud.ViewModels.Home;assembly=CryptCloud"
+             d:DesignHeight="770"
+             d:DesignWidth="1440"
+             x:DataType="vm:DiskConnectionPageViewModel"
+             mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:DiskConnectionPageViewModel />
+    </Design.DataContext>
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+        <Label HorizontalAlignment="Center"
+               Content="Вы еще не подключили ни одного диска."
+               Foreground="{DynamicResource DarkenedForeground}" />
+
+        <Label HorizontalAlignment="Center"
+               Content="Подключите диск чтобы продолжить."
+               Foreground="{DynamicResource DarkenedForeground}" />
+
+        <Button Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Command="{Binding ConnectDiskCommand}">
+
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="10,5"
+                       Content="Подключить диск" />
+
+                <Label Content="{mIcons:MaterialIconExt Kind=CloudPlus}" />
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="CryptCloud/App.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Assets/AppResources.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Assets/AppStyles.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/ViewModels/Home/LatestPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/Home/DiskConnectionPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/Home/DownloadsPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/Home/FilesPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/Home/LatestPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/Home/MyDisksPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/Home/SettingsPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/Home/TrashCanPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/HomePageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/LoginPageView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/MainWindowView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/TopContentElementView.axaml" value="CryptCloud/CryptCloud.csproj" />
+        <entry key="CryptCloud/Views/TopPopupView.axaml" value="CryptCloud/CryptCloud.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

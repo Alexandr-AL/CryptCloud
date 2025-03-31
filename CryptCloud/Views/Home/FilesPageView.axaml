@@ -1,0 +1,223 @@
+﻿<UserControl x:Class="CryptCloud.Views.Home.FilesPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:model="clr-namespace:CryptCloud.Models;assembly=CryptCloud"
+             xmlns:vm="clr-namespace:CryptCloud.ViewModels.Home;assembly=CryptCloud"
+             d:DesignHeight="900"
+             d:DesignWidth="1440"
+             x:DataType="vm:FilesPageViewModel"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:FilesPageViewModel />
+    </Design.DataContext>
+
+    <UserControl.DataTemplates>
+        <DataTemplate DataType="{x:Type model:Folder}">
+            <Button Margin="10"
+                    Background="Transparent"
+                    Command="{Binding $parent[UserControl].((vm:FilesPageViewModel)DataContext).ShowTopContentElementCommand}"
+                    CommandParameter="{Binding .}">
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="{DynamicResource SecondaryButtonBackground}" />
+                    </Style>
+                </Button.Styles>
+
+                <Grid>
+                    <StackPanel>
+                        <Label HorizontalAlignment="Center"
+                               Content="{mIcons:MaterialIconExt Kind=Folder,
+                                                                Size=140}"
+                               Foreground="{DynamicResource IconForeground}" />
+
+                        <StackPanel Margin="0,0,0,3"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
+                            <Button Padding="5,1"
+                                    VerticalAlignment="Center"
+                                    Background="{DynamicResource PurpleButtonBackground}"
+                                    Content="S"
+                                    CornerRadius="18">
+                                <Button.Styles>
+                                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                                        <Setter Property="Background" Value="{DynamicResource PurpleButtonBackground}" />
+                                    </Style>
+                                </Button.Styles>
+                            </Button>
+
+                            <Label Content="{Binding Name}" />
+                        </StackPanel>
+
+                        <Label HorizontalAlignment="Center"
+                               Content="{Binding Created, StringFormat='dd:MM:yyyy hh:mm'}"
+                               Foreground="{DynamicResource DarkenedForeground}" />
+
+                    </StackPanel>
+
+                    <Button Padding="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Classes="transparent">
+                        <Label Content="{mIcons:MaterialIconExt Kind=DotsHorizontal, Size=24}" />
+                    </Button>
+                </Grid>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type model:File}">
+            <Button Margin="10"
+                    Background="Transparent"
+                    Command="{Binding $parent[UserControl].((vm:FilesPageViewModel)DataContext).ShowTopContentElementCommand}"
+                    CommandParameter="{Binding .}">
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="{DynamicResource SecondaryButtonBackground}" />
+                    </Style>
+                </Button.Styles>
+
+                <Grid>
+                    <StackPanel>
+                        <Label HorizontalAlignment="Center"
+                               Content="{mIcons:MaterialIconExt Kind=FileImage,
+                                                                Size=140}"
+                               Foreground="{DynamicResource IconForeground}" />
+
+                        <Label Margin="0,0,0,3"
+                               HorizontalAlignment="Center"
+                               Content="{Binding Name}" />
+
+                        <Label HorizontalAlignment="Center"
+                               Content="{Binding Created, StringFormat='dd:MM:yyyy hh:mm'}"
+                               Foreground="{DynamicResource DarkenedForeground}" />
+                    </StackPanel>
+
+                    <Button Padding="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Classes="transparent">
+                        <Label Content="{mIcons:MaterialIconExt Kind=DotsHorizontal, Size=24}" />
+                    </Button>
+                </Grid>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type model:AddButton}">
+            <Button Background="Transparent">
+                <Button.Styles>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="{DynamicResource SecondaryButtonBackground}" />
+                    </Style>
+                </Button.Styles>
+
+                <Label Content="{mIcons:MaterialIconExt Kind=PlusCircle,
+                                                        Size=140}"
+                       Foreground="{DynamicResource IconForeground}" />
+            </Button>
+        </DataTemplate>
+    </UserControl.DataTemplates>
+
+    <Grid ColumnDefinitions="*"
+          RowDefinitions="auto,*">
+
+        <Grid Grid.Row="0"
+              Grid.Column="0"
+              Margin="10,5"
+              ColumnDefinitions="auto,*"
+              RowDefinitions="auto">
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,20,0,0"
+                        Orientation="Horizontal">
+                <StackPanel.Styles>
+                    <Style Selector="Label">
+                        <Setter Property="FontSize" Value="20" />
+                    </Style>
+                </StackPanel.Styles>
+
+                <Label Content="{Binding Disk.Name}" />
+
+                <Label Content=" - " />
+
+                <Label Content="{Binding Disk.Description}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                <ComboBox Classes="basic"
+                          SelectedIndex="0">
+                    <Label Content="По названию" />
+                </ComboBox>
+
+                <ComboBox Classes="basic"
+                          SelectedIndex="0">
+                    <Label Content="{mIcons:MaterialIconExt Kind=ViewGrid, Size=17}" />
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Grid.Column="0">
+
+            <ScrollViewer>
+                <StackPanel>
+                    <Expander Margin="10,0,10,10"
+                              Background="Transparent"
+                              BorderBrush="Transparent"
+                              BorderThickness="0"
+                              Classes="customExpander"
+                              Header="Последние"
+                              IsExpanded="True">
+
+                        <ItemsControl ItemsSource="{Binding FilesLasts}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Expander>
+
+                    <Expander Margin="10"
+                              Background="Transparent"
+                              BorderBrush="Transparent"
+                              BorderThickness="0"
+                              Classes="customExpander"
+                              CornerRadius="20"
+                              Header="Все файлы"
+                              IsExpanded="True">
+
+                        <ItemsControl ItemsSource="{Binding Files}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button Margin="40"
+                    Padding="10"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    HorizontalContentAlignment="Center">
+
+                <StackPanel HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                    <Label Margin="10,0"
+                           Content="Загрузить файлы" />
+                    <Label Content="{mIcons:MaterialIconExt Kind=Upload, Size=20}" />
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

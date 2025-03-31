@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="CryptCloud.Views.TopContentElementView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CryptCloud.ViewModels"
+             Height="85"
+             VerticalAlignment="Stretch"
+             d:DesignHeight="80"
+             d:DesignWidth="1440"
+             x:DataType="vm:TopContentElementViewModel"
+             Background="Transparent"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:TopContentElementViewModel />
+    </Design.DataContext>
+
+    <Border Background="{DynamicResource SecondaryBackground}"
+            CornerRadius="0,0,30,30">
+
+        <Grid ColumnDefinitions="Auto,*"
+              RowDefinitions="*">
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+
+                <Button Margin="15"
+                        Padding="10,8"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource SecondaryButtonBackground}">
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center"
+                               Content="{mIcons:MaterialIconExt Kind=InformationVariantCircle,
+                                                                Size=20}" />
+                        <Label VerticalAlignment="Center"
+                               Content="Инфо" />
+                    </StackPanel>
+                </Button>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center"
+                           Content="Папка 1"
+                           FontSize="26"
+                           FontWeight="Medium" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <Button Margin="10"
+                        Padding="10,8">
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center"
+                               Content="{mIcons:MaterialIconExt Kind=Download,
+                                                                Size=20}" />
+                        <Label VerticalAlignment="Center"
+                               Content="Скачать" />
+                    </StackPanel>
+                </Button>
+
+                <Button Margin="10"
+                        Padding="10,8"
+                        Background="{DynamicResource SecondaryButtonBackground}">
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center"
+                               Content="{mIcons:MaterialIconExt Kind=TrashCan,
+                                                                Size=20}" />
+                        <Label VerticalAlignment="Center"
+                               Content="Удалить" />
+                    </StackPanel>
+                </Button>
+
+                <Button Margin="0,0,15,0"
+                        Classes="transparent"
+                        Click = "Button_Click">
+                    <Label Content="{mIcons:MaterialIconExt Kind=Close, Size=20}" />
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

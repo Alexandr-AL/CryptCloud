@@ -1,0 +1,253 @@
+﻿<UserControl x:Class="CryptCloud.Views.HomePageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:CryptCloud.Models;assembly=CryptCloud"
+             xmlns:view="clr-namespace:CryptCloud.Views"
+             xmlns:vm="clr-namespace:CryptCloud.ViewModels;assembly=CryptCloud"
+             d:DesignHeight="900"
+             d:DesignWidth="1440"
+             x:DataType="vm:HomePageViewModel"
+             mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:HomePageViewModel />
+    </Design.DataContext>
+
+    <Grid Margin="0,20,0,0"
+          ColumnDefinitions="*"
+          RowDefinitions="auto, *">
+
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                Margin="15"
+                Padding="5"
+                BorderBrush="{DynamicResource BorderBrush1}"
+                BorderThickness="1"
+                CornerRadius="40">
+
+            <Grid ColumnDefinitions="*, *"
+                  RowDefinitions="*">
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+
+                    <ComboBox Grid.Row="0"
+                              Grid.Column="0"
+                              Width="210"
+                              Margin="10"
+                              VerticalAlignment="Stretch"
+                              HorizontalContentAlignment="Center"
+                              BorderThickness="0"
+                              Classes="topCombobox"
+                              CornerRadius="30"
+                              ItemsSource="{Binding Disks}"
+                              PlaceholderText="Подключенные диски"
+                              SelectedIndex="{Binding SelectedDiskItem}">
+
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Disk">
+                                <StackPanel Margin="5,0,0,0"
+                                            Orientation="Horizontal">
+                                    <Label Content="{Binding Name}" />
+                                    <Label Content="{Binding Description}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Button Margin="10"
+                            VerticalAlignment="Stretch"
+                            Background="{DynamicResource GradientBrush1}"
+                            CornerRadius="30">
+                        <Label Margin="12,0"
+                               VerticalContentAlignment="Center"
+                               Content="ВР Премиум" />
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="10"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+
+                    <TextBox Width="250"
+                             VerticalContentAlignment="Center"
+                             Background="{DynamicResource SecondaryButtonBackground}"
+                             BorderThickness="0"
+                             CornerRadius="30"
+                             Watermark=" Поиск" />
+
+                    <Button Margin="10,0"
+                            Padding="0"
+                            VerticalAlignment="Center"
+                            Classes="transparent"
+                            Content="{mIcons:MaterialIconExt Kind=BellBadge,
+                                                             Size=27}"
+                            Foreground="{DynamicResource IconForeground}" />
+
+                    <Button Margin="10,0"
+                            Padding="0"
+                            VerticalAlignment="Center"
+                            Classes="transparent"
+                            Command="{Binding GoToSettingsPageCommand}"
+                            Content="{mIcons:MaterialIconExt Kind=Cog,
+                                                             Size=27}"
+                            Foreground="{DynamicResource IconForeground}" />
+
+                    <Button Padding="13,6"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource PurpleButtonBackground}"
+                            Content="S"
+                            CornerRadius="18"
+                            FontSize="30"
+                            FontWeight="Bold" />
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ContentControl Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,10,0,0"
+                        VerticalAlignment="Top"
+                        IsVisible="{Binding IsVisibleTopContentElement}">
+
+            <ContentControl.Styles>
+                <Style Selector="ContentControl">
+                    <Setter Property="Opacity" Value="0.1" />
+                    <Setter Property="Transitions">
+                        <Transitions>
+                            <DoubleTransition Property="Opacity"
+                                              Duration="0:0:0.3" />
+                        </Transitions>
+                    </Setter>
+                </Style>
+
+                <Style Selector="ContentControl[IsVisible=True]">
+                    <Setter Property="Opacity" Value="1" />
+					
+                </Style>
+
+				<Style Selector="ContentControl[IsVisible=False]">
+					<Setter Property="Opacity" Value="0.1" />
+				</Style>
+            </ContentControl.Styles>
+
+            <view:TopContentElementView />
+        </ContentControl>
+
+        <Grid Grid.Row="1"
+              Grid.Column="0"
+              ColumnDefinitions="auto, *"
+              RowDefinitions="*">
+
+            <Border Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="15,5,10,10"
+                    Background="{DynamicResource SecondaryBackground}"
+                    BorderBrush="{DynamicResource BorderBrush1}"
+                    BorderThickness="1"
+                    CornerRadius="30"
+                    IsVisible="{Binding MenuIsVisible}">
+                <StackPanel Margin="0"
+                            HorizontalAlignment="Stretch">
+
+                    <Button Margin="15,10,30,3"
+                            Padding="10,10,10,10"
+                            HorizontalAlignment="Stretch">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="0,0,5,0"
+                                   VerticalContentAlignment="Center"
+                                   Content="{mIcons:MaterialIconExt Kind=PlusCircle,
+                                                                    Size=20}" />
+                            <Label Margin="10,0,10,0"
+                                   VerticalContentAlignment="Center"
+                                   Content="Создать" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Classes="menu"
+                            Classes.active="{Binding LatestPageIsActive}"
+                            Command="{Binding GoToLatestPageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Classes="menu"
+                                   Content="{mIcons:MaterialIconExt Kind=Clock,
+                                                                    Size=24}" />
+                            <Label Classes="menu"
+                                   Content="Последние" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Classes="menu"
+                            Classes.active="{Binding FilesPageIsActive}"
+                            Command="{Binding GoToFilesPageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Classes="menu"
+                                   Content="{mIcons:MaterialIconExt Kind=Folder,
+                                                                    Size=24}" />
+                            <Label Classes="menu"
+                                   Content="Файлы" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Classes="menu"
+                            Classes.active="{Binding MyDisksPageIsActive}"
+                            Command="{Binding GoToMyDisksPageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Classes="menu"
+                                   Content="{mIcons:MaterialIconExt Kind=CloudCheckVariant,
+                                                                    Size=24}" />
+                            <Label Classes="menu"
+                                   Content="Мои диски" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Classes="menu"
+                            Classes.active="{Binding DownloadsPageIsActive}"
+                            Command="{Binding GoToDownloadsPageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Classes="menu"
+                                   Content="{mIcons:MaterialIconExt Kind=Download,
+                                                                    Size=24}" />
+                            <Label Classes="menu"
+                                   Content="Загрузки" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Classes="menu"
+                            Classes.active="{Binding SettingsPageIsActive}"
+                            Command="{Binding GoToSettingsPageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Classes="menu"
+                                   Content="{mIcons:MaterialIconExt Kind=Cog,
+                                                                    Size=24}" />
+                            <Label Classes="menu"
+                                   Content="Настройки" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Classes="menu"
+                            Classes.active="{Binding TrashCanPageIsActive}"
+                            Command="{Binding GoToTrashCanPageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Classes="menu"
+                                   Content="{mIcons:MaterialIconExt Kind=TrashCan,
+                                                                    Size=24}" />
+                            <Label Classes="menu"
+                                   Content="Корзина" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <ContentControl Grid.Row="0"
+                            Grid.Column="1"
+                            Content="{Binding CurrentPageForHomePage}" />
+        </Grid>
+    </Grid>
+</UserControl>
